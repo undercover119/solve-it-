@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Puzzle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            padding: 20px;
+        }
+        #game-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e60000;
+        }
+        #message {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h2>Valentine's Puzzle Game 💖</h2>
+        <p id="question">OLINGA CRT AH KANDUPIDI: "My favourite nickname"</p>
+        <input type="text" id="answer" placeholder="Type your answer here...">
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        const riddles = [
+            { question: "My favourite nickname", answer: "kanmani" },
+            { question: "The one dish i always ask for", answer: "Maggie" },
+            { question: "say--  I AM CHUCHHA KOLANDHAI ", answer: "I AM CHUCHHA KOLANDHAI" }
+        ];
+        
+        let currentRiddle = 0;
+
+        function checkAnswer() {
+            let userAnswer = document.getElementById("answer").value.toLowerCase().trim();
+            let message = document.getElementById("message");
+            
+            if (userAnswer === riddles[currentRiddle].answer) {
+                currentRiddle++;
+                if (currentRiddle < riddles.length) {
+                    document.getElementById("question").innerText = riddles[currentRiddle].question;
+                    document.getElementById("answer").value = "";
+                    message.innerText = "GOOD UH GUNDU UH BOY CRT UH 🎉";
+                } else {
+                    message.innerText = "WOWWW SUPEREHHHHH ELLAMEH CRT UHHHHH ❤️";
+                    document.getElementById("game-container").innerHTML += "<p>💌KUTTYYYYYYYYY PAIYAHHHHHH SIKAROHHHHHH ORUKKUUUUUUUU VAINGAAAAAAAAA UNNA SAVADIKURENNNN ❤️' </p>";
+                }
+            } else {
+                message.innerText = "THAPPU PAKKI. 💡";
+            }
+        }
+    </script>
+</body>
+</html>
